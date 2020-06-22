@@ -1,3 +1,6 @@
 import todos from './todos'
+import {combineReducers} from 'redux'
 
-export default todos
+export default combineReducers({
+    todos: todos
+})

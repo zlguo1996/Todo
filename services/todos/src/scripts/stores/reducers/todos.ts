@@ -13,7 +13,7 @@ export default function todoReducer(
     action: TodoActionTypes
 ): TodoState {
     switch (action.type) {
-        case ADD_TODO_ITEM: {
+    case ADD_TODO_ITEM: {
             return {
                 ...state,
                 order: [
