@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react'
+import React, {FunctionComponent, useState, useRef} from 'react'
 import {addTodoItem} from 'stores/actions/todoActions'
 import TextField from '@material-ui/core/TextField'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
@@ -27,9 +27,16 @@ export const AddTodoItem: FunctionComponent = () => {
         setText('')
     }
 
+    const textRef = useRef<HTMLDivElement>(null)
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Enter') {
+            tryAddItem()
+        }
+    }
+
     return <div>
         <AddCircleIcon className={className.icon} />
-        <TextField multiline value={text} onChange={event => setText(event.target.value)} onBlur={tryAddItem} />
+        <TextField ref={textRef} value={text} onChange={event => setText(event.target.value)} onBlur={tryAddItem} onKeyPress={keyDownHandler} />
     </div>
 }
 AddTodoItem.displayName = 'AddTodoItem'
