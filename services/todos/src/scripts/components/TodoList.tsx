@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     root: {
         display: 'flex',
         justifyContent: 'center',
+        padding: '30px',
     },
     paper: {
         padding: '10px',
