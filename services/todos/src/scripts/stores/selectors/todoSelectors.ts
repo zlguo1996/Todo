@@ -1,4 +1,4 @@
-import storeInstance, {RootState} from '../store'
+import {RootState} from '../store'
 
 export const getTodoState = (state: RootState) => state.todos
 
