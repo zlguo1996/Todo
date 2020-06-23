@@ -27,11 +27,11 @@ export const TodoList: FunctionComponent<{}> = () => {
     return <DndProvider backend={HTML5Backend}>
         <div className={className.root}>
             <Paper className={className.paper}>
-                <AddTodoItem />
+                <AddTodoItem key="add-todo-item" />
                 {todoIds.map(
                     (id, index) => {
                         const todo = <DraggableTodoItem key={id} itemId={id} index={index} />
-                        const divider = <Divider />
+                        const divider = <Divider key={`divider-${id}`} />
                         const isLast = index === todoIds.length - 1
 
                         if (isLast) {
