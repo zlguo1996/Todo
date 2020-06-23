@@ -25,7 +25,7 @@ export const DraggableTodoItem: FunctionComponent<DraggableTodoItemProps> = (pro
             index: index,
         },
         collect: (monitor) => ({
-            isDragging: itemId === monitor.getItem()?.id
+            isDragging: monitor.isDragging()
         })
     })
 

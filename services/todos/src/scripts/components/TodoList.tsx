@@ -28,18 +28,20 @@ export const TodoList: FunctionComponent<{}> = () => {
         <div className={className.root}>
             <Paper className={className.paper}>
                 <AddTodoItem key="add-todo-item" />
-                {todoIds.map(
-                    (id, index) => {
+                {todoIds.reduce<JSX.Element[]>(
+                    (prev, id, index) => {
                         const todo = <DraggableTodoItem key={id} itemId={id} index={index} />
-                        const divider = <Divider key={`divider-${id}`} />
+                        const divider = <Divider key={`divider-${index}`} />
                         const isLast = index === todoIds.length - 1
 
-                        if (isLast) {
-                            return todo
+                        prev.push(todo)
+                        if (!isLast) {
+                            prev.push(divider)
                         }
 
-                        return [todo, divider]
-                    }
+                        return prev
+                    },
+                    []
                 )}
             </Paper>
         </div>
