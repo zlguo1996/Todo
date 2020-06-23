@@ -28,7 +28,7 @@ export const Filter: FunctionComponent = () => {
         {/* <Typography variant="caption" gutterBottom>Filters: </Typography> */}
         {labels.map((label, index) => (
             <Chip
-                size="small" label={label} variant="outlined" color={label === selected ? 'primary' : 'default'}
+                key={label} size="small" label={label} variant="outlined" color={label === selected ? 'primary' : 'default'}
                 onClick={() => dispatch(modifyFilter({
                     state: {
                         visible: labelFilter[index]
