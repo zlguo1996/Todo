@@ -44,6 +44,19 @@ export const DraggableTodoItem: FunctionComponent<DraggableTodoItemProps> = (pro
                 return
             }
 
+            // Only perform the move when the mouse has crossed half of the items height
+            const hoverBoundingRect = ref.current?.getBoundingClientRect()
+            const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+            const clientOffset = monitor.getClientOffset()
+            if (clientOffset === null) return
+            const hoverClientY = clientOffset.y - hoverBoundingRect.top
+            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+                return
+            }
+            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+                return
+            }
+
             dispatch(moveTodoItemAction({
                 id: item.id,
                 targetIndex: hoverIndex,
