@@ -35,7 +35,7 @@ interface ModifyTodoItemAction {
     item: Partial<TodoItem>,
 }
 
-export const setTodoItemState = simpleActionFuncFactory<ModifyTodoItemAction>(MODIFY_TODO_ITEM)
+export const modifyTodoItem = simpleActionFuncFactory<ModifyTodoItemAction>(MODIFY_TODO_ITEM)
 
 interface MoveTodoItemAction {
     type: typeof MOVE_TODO_ITEM,

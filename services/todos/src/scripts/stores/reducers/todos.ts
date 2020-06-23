@@ -36,7 +36,7 @@ export default function todoReducer(
             }
 
             const index = res.order.findIndex((val) => val === action.id)
-            delete res.order[index]
+            res.order.splice(index, 1)
             delete res.items[action.id]
 
             return res
