@@ -1,13 +1,15 @@
 import React, {FunctionComponent} from 'react'
 import {DraggableTodoItem} from './DraggableTodoItem'
 import {useSelector} from 'react-redux'
-import {getTodoIds} from 'stores/selectors/todoSelectors'
+import {getTodoIds} from 'stores/selectors'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {makeStyles} from '@material-ui/styles'
 import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
 import {AddTodoItem} from './AddTodoItem'
+import {Filter} from './Filter'
+import {getFilteredTodos} from 'stores/selectors'
 
 const useStyles = makeStyles({
     root: {
@@ -22,11 +24,12 @@ const useStyles = makeStyles({
 export const TodoList: FunctionComponent<{}> = () => {
     const className = useStyles()
 
-    const todoIds = useSelector(getTodoIds)
+    const todoIds = useSelector(getFilteredTodos)
 
     return <DndProvider backend={HTML5Backend}>
         <div className={className.root}>
             <Paper className={className.paper}>
+                <Filter />
                 <AddTodoItem key="add-todo-item" />
                 {todoIds.reduce<JSX.Element[]>(
                     (prev, id, index) => {

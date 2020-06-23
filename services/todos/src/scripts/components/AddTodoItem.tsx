@@ -1,9 +1,9 @@
 import React, {FunctionComponent, useState} from 'react'
-import store from 'stores/store'
 import {addTodoItem} from 'stores/actions/todoActions'
 import TextField from '@material-ui/core/TextField'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import {makeStyles} from '@material-ui/styles'
+import {useDispatch} from 'react-redux'
 
 const useStyles = makeStyles({
     icon: {
@@ -15,13 +15,14 @@ const useStyles = makeStyles({
 export const AddTodoItem: FunctionComponent = () => {
     const className = useStyles()
     const [text, setText] = useState<string>('')
+    const dispatch = useDispatch()
 
     const tryAddItem = () => {
         if (text === '') {
             return
         }
 
-        store.dispatch(addTodoItem(text))
+        dispatch(addTodoItem(text))
 
         setText('')
     }

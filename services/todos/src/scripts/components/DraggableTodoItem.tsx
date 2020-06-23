@@ -2,8 +2,8 @@ import React, {FunctionComponent, useRef} from 'react'
 import {useDrag, useDrop} from 'react-dnd'
 import {ItemTypes, TodoItemType} from 'models/DraggableItemTypes'
 import {moveTodoItemAction} from 'stores/actions/todoActions'
-import store from 'stores/store'
 import {TodoItem} from './TodoItem'
+import {useDispatch} from 'react-redux'
 
 interface DraggableTodoItemProps {
     itemId: string,
@@ -17,6 +17,7 @@ export const DraggableTodoItem: FunctionComponent<DraggableTodoItemProps> = (pro
     } = props
 
     const ref = useRef<HTMLDivElement>(null)
+    const dispatch = useDispatch()
 
     const [{isDragging}, drag] = useDrag<TodoItemType, unknown, CollectProps>({
         item: {
@@ -43,7 +44,7 @@ export const DraggableTodoItem: FunctionComponent<DraggableTodoItemProps> = (pro
                 return
             }
 
-            store.dispatch(moveTodoItemAction({
+            dispatch(moveTodoItemAction({
                 id: item.id,
                 targetIndex: hoverIndex,
             }))

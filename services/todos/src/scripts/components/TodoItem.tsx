@@ -1,11 +1,10 @@
-import React, {forwardRef, useEffect} from 'react'
-import {useSelector} from 'react-redux'
-import {getTodoItem} from 'stores/selectors/todoSelectors'
+import React, {forwardRef} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {getTodoItem} from 'stores/selectors'
 import {RootState} from 'stores/store'
 import {TodoItem as TodoItemData} from 'models/todo'
 import InputBase from '@material-ui/core/InputBase'
 import Checkbox from '@material-ui/core/Checkbox'
-import store from 'stores/store'
 import {modifyTodoItem, removeTodoItem} from 'stores/actions/todoActions'
 import {makeStyles} from '@material-ui/styles'
 
@@ -41,10 +40,11 @@ export const TodoItem = forwardRef<HTMLDivElement, TodoItemProps>((props, ref) =
     }
 
     const item = useSelector<RootState, TodoItemData>(state => getTodoItem(state, itemId))
+    const dispatch = useDispatch()
 
     const tryRemoveItem = () => {
         if (item.text === '') {
-            store.dispatch(removeTodoItem({
+            dispatch(removeTodoItem({
                 id: itemId
             }))
         }
@@ -55,20 +55,19 @@ export const TodoItem = forwardRef<HTMLDivElement, TodoItemProps>((props, ref) =
     })
 
     return <div ref={ref} className={className.root}>
-        <Checkbox checked={item.state === "Completed"} onChange={event => store.dispatch(modifyTodoItem({
+        <Checkbox checked={item.state === "Completed"} onChange={event => dispatch(modifyTodoItem({
             id: itemId,
             item: {
                 state: event.target.checked ? "Completed" : "Incomplete",
             }
         }))} />
         <InputBase multiline value={item.text} onBlur={tryRemoveItem}
-            onChange={event => store.dispatch(modifyTodoItem({
+            onChange={event => dispatch(modifyTodoItem({
                 id: itemId,
                 item: {
                     text: event.target.value,
                 }
             }))}
-            inputProps={{ 'aria-label': 'naked' }}
         />
     </div>
 })
