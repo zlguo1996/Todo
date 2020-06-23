@@ -62,7 +62,8 @@ export default function todoReducer(
             const availableRange: [number, number] = [0, res.order.length - 1]
             const insertIndex = limitInRange(action.targetIndex, availableRange)
 
-            res.order.splice(index, 1).splice(insertIndex, 0, action.id)
+            res.order.splice(index, 1)
+            res.order.splice(insertIndex, 0, action.id)
 
             return res
         }

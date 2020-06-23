@@ -14,3 +14,5 @@ ReactDOM.render(
 
 import {addTodoItem} from 'stores/actions/todoActions'
 store.dispatch(addTodoItem('hello'))
+store.dispatch(addTodoItem('asdfa'))
+store.dispatch(addTodoItem('asdfas'))
