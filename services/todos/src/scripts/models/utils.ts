@@ -1,5 +1,5 @@
 export function generateId(): string {
-    return Math.random().toString(36).substr(2, 9)
+    return new Date().toISOString()
 }
 
 export function limitInRange(num: number, range: [number, number]): number {
