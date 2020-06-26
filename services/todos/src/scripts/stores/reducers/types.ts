@@ -1,4 +1,4 @@
-import {TodoItem} from 'models/todo'
+import {TodoItem} from 'common'
 
 export interface TodoState {
     order: string[],

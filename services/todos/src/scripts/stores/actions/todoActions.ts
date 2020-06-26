@@ -1,5 +1,5 @@
 import {ADD_TODO_ITEM, REMOVE_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM} from './types'
-import {TodoItem} from "models/todo"
+import {TodoItem} from "common"
 import {generateId} from "models/utils"
 import {simpleActionFuncFactory} from './utils'
 

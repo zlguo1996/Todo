@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/styles'
 import {modifyFilter} from 'stores/actions/filterActions'
 import {getFilterState} from 'stores/selectors'
 import {useSelector, useDispatch} from 'react-redux'
-import {TodoItemState} from 'models/todo'
+import {TodoItemState} from 'common'
 
 const useStyles = makeStyles({
     root: {

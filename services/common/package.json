@@ -1,0 +1,7 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "common typescript library for other services",
+  "main": "index.ts",
+  "license": "MIT"
+}

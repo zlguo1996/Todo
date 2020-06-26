@@ -1,5 +1,5 @@
 import {MODIFY_FILTER} from './types'
-import {TodoItemState} from 'models/todo'
+import {TodoItemState} from 'common'
 import { simpleActionFuncFactory } from './utils'
 
 export interface FilterState {

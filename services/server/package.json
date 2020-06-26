@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for operate on Todo list database",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bookshelf": "^1.1.1",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "bookshelf": "^1.2.0",
+    "common": "../common",
+    "env-var": "^6.2.0",
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1"
+  }
+}
