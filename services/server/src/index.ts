@@ -6,12 +6,22 @@ config()
 import './api/route'
 
 
-import {addTodoItem} from './database/operation'
+import {addTodoItem, reorderTodoItem, modifyTodoItem, readAllTodoItems} from './database/operation'
 
 async function test() {
-    const id = await addTodoItem({
-        text: 'hello world',
-        state: 'Incomplete',
-    })
+    // const id = await addTodoItem({
+    //     text: 'hello',
+    //     state: 'Incomplete',
+    // })
+
+    // await modifyTodoItem({
+    //     id: 8,
+    //     order: 2,
+    // })
+
+    // await reorderTodoItem(8, 0)
+
+    const items = await readAllTodoItems()
+    console.log(items)
 }
 test()

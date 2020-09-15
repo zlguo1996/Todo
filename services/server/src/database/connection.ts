@@ -3,7 +3,7 @@ import Knex from 'knex'
 import Bookshelf from 'bookshelf'
 import { FullTodoItem } from 'common'
 
-const knex = Knex({
+export const knex = Knex({
     client: 'mysql',
     connection: {
         host: env.get('DB_HOST').default('127.0.0.1').asString(),
@@ -12,9 +12,8 @@ const knex = Knex({
         database: env.get('DB_DATABASE').required().asString(),
         charset: 'utf8',
     },
+    debug: true,
 })
-
-export const items = knex<FullTodoItem>('items')
 
 export const bookshelf = Bookshelf(knex as any)
 

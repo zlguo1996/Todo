@@ -6,6 +6,6 @@ export interface TodoItem {
 }
 
 export interface FullTodoItem extends TodoItem {
-    id: string,
+    id: number,
     order: number,
 }
