@@ -19,6 +19,10 @@ export async function removeTodoItem(id: number) {
     await items().whereNotBetween('order', [0, order]).decrement('order', 1)
 }
 
+export async function removeAllTodoItems() {
+    await items().del()
+}
+
 export async function modifyTodoItem(item: Partial<FullTodoItem> & Pick<FullTodoItem, 'id'>) {
     const {
         id,
@@ -39,7 +43,6 @@ export async function readAllTodoItems() {
 
 export async function reorderTodoItem(id: number, targetOrder: number) {
     const currentOrder: number = (await items().where('id', id).select('order'))[0].order
-    console.log(currentOrder, targetOrder)
     if (currentOrder < targetOrder) {
         await items().whereBetween('order', [currentOrder+1, targetOrder]).decrement('order', 1)
     }

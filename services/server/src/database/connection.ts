@@ -1,7 +1,6 @@
 import * as env from 'env-var'
 import Knex from 'knex'
 import Bookshelf from 'bookshelf'
-import { FullTodoItem } from 'common'
 
 export const knex = Knex({
     client: 'mysql',
@@ -12,7 +11,7 @@ export const knex = Knex({
         database: env.get('DB_DATABASE').required().asString(),
         charset: 'utf8',
     },
-    debug: true,
+    debug: false,
 })
 
 export const bookshelf = Bookshelf(knex as any)

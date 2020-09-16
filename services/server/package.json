@@ -7,6 +7,9 @@
   "devDependencies": {
     "@types/bookshelf": "^1.1.1",
     "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.13",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.5"
   },
@@ -20,6 +23,7 @@
     "mysql": "^2.18.1"
   },
   "scripts": {
-    "serve": "ts-node src/index.ts"
+    "serve": "ts-node src/index.ts",
+    "test": "jest --setupFiles dotenv/config --detectOpenHandles"
   }
 }
