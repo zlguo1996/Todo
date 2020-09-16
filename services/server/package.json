@@ -26,6 +26,6 @@
   },
   "scripts": {
     "serve": "ts-node src/index.ts",
-    "test": "jest --setupFiles dotenv/config --detectOpenHandles -- validator"
+    "test": "jest --setupFiles dotenv/config"
   }
 }
