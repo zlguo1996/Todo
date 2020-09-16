@@ -1,3 +1,7 @@
+/**
+ * WARNING: this test would clear all the data inside MySQL database
+ */
+
 import { FullTodoItem } from 'common'
 import {addTodoItem, removeTodoItem, removeAllTodoItems, modifyTodoItem, readTodoItem, readAllTodoItems, reorderTodoItem} from '../database'
 import {knex} from '../database/connection'
