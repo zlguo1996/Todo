@@ -1,8 +1,7 @@
 import express from 'express'
 import {addTodoItem, removeTodoItem, removeAllTodoItems, modifyTodoItem, readTodoItem, readAllTodoItems, reorderTodoItem} from '../database'
 import asyncHandler from 'express-async-handler'
-import { from } from 'env-var'
-import {ajv} from './validator'
+import {validatorFactory} from './validator'
 const app = express()
 
 app.get('/api', function (req, res) {
@@ -20,7 +19,7 @@ app.get('api/todoitems/:id', asyncHandler(async (req, res) => {
 }))
 
 app.post('api/todoitems', asyncHandler(async (req, res) => {
-    // ajv.validate()
+    validatorFactory('item#/definitions/AddItem')(req.body)
     const id = await addTodoItem(req.body)
     res.json({
         id: id

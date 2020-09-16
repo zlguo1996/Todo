@@ -1,30 +1,30 @@
-import {validatorFactory} from '../api/validator'
+import {validatorFactory, ValidationError} from '../api/validator'
 
 test('Validator (AddItem) works when encounter valid data', () => {
     const validate = validatorFactory('item#/definitions/AddItem')
-    const res = validate({
+    expect(() => validate({
         text: 'text',
-    })
-
-    expect(res).toBe(true)
+    })).not.toThrow()
 })
 
 test('Validator (AddItem) works when encounter invalid data (additional property)', () => {
     const validate = validatorFactory('item#/definitions/AddItem')
-    const res = validate({
+    expect(() => validate({
         text: 'text',
         test: 'test'
-    })
-
-    expect(res).toBe(false)
+    })).toThrow(ValidationError)
 })
 
 
 test('Validator (AddItem) works when encounter invalid data (false type)', () => {
     const validate = validatorFactory('item#/definitions/AddItem')
-    const res = validate({
+    expect(() => validate({
         text: 123
-    })
+    })).toThrow(ValidationError)
+})
 
-    expect(res).toBe(false)
+test('toThrow works properly with custom error', () => {
+    expect(() => {
+        throw new ValidationError('helo')
+    }).toThrow(ValidationError)
 })

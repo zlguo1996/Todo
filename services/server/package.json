@@ -26,6 +26,6 @@
   },
   "scripts": {
     "serve": "ts-node src/index.ts",
-    "test": "jest --setupFiles dotenv/config"
+    "test": "jest --setupFiles dotenv/config -- validator"
   }
 }
