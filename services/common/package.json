@@ -2,6 +2,15 @@
   "name": "common",
   "version": "1.0.0",
   "description": "common typescript library for other services",
-  "main": "index.ts",
-  "license": "MIT"
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "typescript-json-schema": "^0.43.0"
+  },
+  "scripts": {
+    "build": "typescript-json-schema src/apiTypes.ts * --noExtraProps --out src/schema.json"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0"
+  }
 }

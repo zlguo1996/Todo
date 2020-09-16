@@ -14,16 +14,18 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "ajv": "^6.12.5",
     "bookshelf": "^1.2.0",
     "common": "../common",
     "dotenv": "^8.2.0",
     "env-var": "^6.2.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
     "knex": "^0.21.1",
     "mysql": "^2.18.1"
   },
   "scripts": {
     "serve": "ts-node src/index.ts",
-    "test": "jest --setupFiles dotenv/config --detectOpenHandles"
+    "test": "jest --setupFiles dotenv/config --detectOpenHandles -- validator"
   }
 }
