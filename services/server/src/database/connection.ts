@@ -1,6 +1,6 @@
 import * as env from 'env-var'
 import Knex from 'knex'
-import Bookshelf from 'bookshelf'
+// import Bookshelf from 'bookshelf'
 
 export const knex = Knex({
     client: 'mysql',
@@ -14,12 +14,12 @@ export const knex = Knex({
     debug: false,
 })
 
-export const bookshelf = Bookshelf(knex as any)
+// export const bookshelf = Bookshelf(knex as any)
 
-const Item = bookshelf.model('Item', {
-    tableName: 'items',
-})
+// const Item = bookshelf.model('Item', {
+//     tableName: 'items',
+// })
 
-const Order = bookshelf.model('Order', {
-    tableName: 'order',
-})
+// const Order = bookshelf.model('Order', {
+//     tableName: 'order',
+// })
