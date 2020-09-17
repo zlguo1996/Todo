@@ -5,7 +5,7 @@ function errorHandler(handler: express.RequestHandler) {
     const wrappedHandler: express.RequestHandler = (req, res, next) => {
         const newNext: express.NextFunction = (err?: any) => {
             if (err instanceof Error) {
-                res.send({
+                res.json({
                     code: 500,
                     msg: `${err.name}: ${err.message}`
                 })
