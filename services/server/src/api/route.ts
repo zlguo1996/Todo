@@ -1,6 +1,6 @@
 import express, {Response} from 'express'
 import {addTodoItem, removeTodoItem, removeAllTodoItems, modifyTodoItem, readTodoItem, readAllTodoItems, reorderTodoItem} from '../database'
-import asyncHandler from 'express-async-handler'
+import {asyncHandler} from './asyncHandler'
 import {validatorFactory} from './validator'
 const app = express()
 
@@ -39,9 +39,16 @@ app.delete('api/todoitems/:id', asyncHandler(async (req, res) => {
     successResult(res)
 }))
 
+app.delete('api/todoitems', asyncHandler(async (req, res) => {
+    await removeAllTodoItems()
+    successResult(res)
+}))
+
 function successResult(res: Response<any>, result?: any) {
     res.json({
         code: 200,
         result: result,
     })
 }
+
+export default app
