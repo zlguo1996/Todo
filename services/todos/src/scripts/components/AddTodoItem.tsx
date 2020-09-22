@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState, useRef} from 'react'
-import {addTodoItem} from 'stores/actions/todoActions'
+import {tryAddItem as tryAddItemAction} from 'stores/actions/apiActions'
 import TextField from '@material-ui/core/TextField'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import {makeStyles} from '@material-ui/styles'
@@ -22,7 +22,7 @@ export const AddTodoItem: FunctionComponent = () => {
             return
         }
 
-        dispatch(addTodoItem(text))
+        dispatch(tryAddItemAction(text))
 
         setText('')
     }

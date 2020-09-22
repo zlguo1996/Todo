@@ -1,8 +1,8 @@
 import {TodoItem} from 'common'
 
 export interface TodoState {
-    order: string[],
+    order: number[],
     items: {
-        [key: string]: TodoItem,
+        [key: number]: TodoItem,
     },
 }

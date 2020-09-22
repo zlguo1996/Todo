@@ -6,6 +6,6 @@ export const ItemTypes = {
 
 export interface TodoItemType extends DragObjectWithType {
     type: typeof ItemTypes.TodoItem,
-    id: string,
+    id: number,
     index: number,
 }

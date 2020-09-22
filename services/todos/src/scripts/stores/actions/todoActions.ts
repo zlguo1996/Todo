@@ -1,37 +1,27 @@
-import {ADD_TODO_ITEM, REMOVE_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM} from './types'
-import {TodoItem} from "common"
-import {generateId} from "models/utils"
+import {ADD_TODO_ITEM, REMOVE_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM, UPDATE_TODO_ITEMS} from './types'
+import {TodoItem, FullTodoItem} from "common"
 import {simpleActionFuncFactory} from './utils'
 
-export type TodoActionTypes = AddTodoItemAction | RemoveTodoItemAction | ModifyTodoItemAction | MoveTodoItemAction
+export type TodoActionTypes = AddTodoItemAction | RemoveTodoItemAction | ModifyTodoItemAction | MoveTodoItemAction | UpdateTodoItemsActon
 
 interface AddTodoItemAction {
     type: typeof ADD_TODO_ITEM,
-    id: string,
+    id: number,
     item: TodoItem,
 }
 
-export function addTodoItem(text: string): AddTodoItemAction {
-    return {
-        type: ADD_TODO_ITEM,
-        id: generateId(),
-        item: {
-            text: text,
-            state: "Incomplete",
-        }
-    }
-}
+export const addTodoItem = simpleActionFuncFactory<AddTodoItemAction>(ADD_TODO_ITEM)
 
 interface RemoveTodoItemAction {
     type: typeof REMOVE_TODO_ITEM,
-    id: string,
+    id: number,
 }
 
 export const removeTodoItem = simpleActionFuncFactory<RemoveTodoItemAction>(REMOVE_TODO_ITEM)
 
 interface ModifyTodoItemAction {
     type: typeof MODIFY_TODO_ITEM,
-    id: string,
+    id: number,
     item: Partial<TodoItem>,
 }
 
@@ -39,8 +29,15 @@ export const modifyTodoItem = simpleActionFuncFactory<ModifyTodoItemAction>(MODI
 
 interface MoveTodoItemAction {
     type: typeof MOVE_TODO_ITEM,
-    id: string,
+    id: number,
     targetIndex: number,
 }
 
 export const moveTodoItemAction = simpleActionFuncFactory<MoveTodoItemAction>(MOVE_TODO_ITEM)
+
+interface UpdateTodoItemsActon {
+    type: typeof UPDATE_TODO_ITEMS,
+    items: FullTodoItem[]   // ordered by 'order'
+}
+
+export const updateTodoItemsAction = simpleActionFuncFactory<UpdateTodoItemsActon>(UPDATE_TODO_ITEMS)

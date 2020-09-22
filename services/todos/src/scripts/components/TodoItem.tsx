@@ -10,7 +10,7 @@ import {makeStyles} from '@material-ui/styles'
 import Fade from '@material-ui/core/Fade'
 
 interface TodoItemProps {
-    itemId: string,
+    itemId: number,
     visibility?: boolean,
 }
 

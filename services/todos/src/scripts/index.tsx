@@ -14,7 +14,7 @@ ReactDOM.render(
     document.querySelector("#app")
 );
 
-import {addTodoItem} from 'stores/actions/todoActions'
-store.dispatch(addTodoItem('hello'))
-store.dispatch(addTodoItem('asdfa'))
-store.dispatch(addTodoItem('asdfas'))
+import {tryAddItem} from 'stores/actions/apiActions'
+// store.dispatch(tryAddItem('hello'))
+// store.dispatch(tryAddItem('asdfa'))
+// store.dispatch(tryAddItem('asdfas'))

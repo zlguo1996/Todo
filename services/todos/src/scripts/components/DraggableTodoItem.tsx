@@ -6,7 +6,7 @@ import {TodoItem} from './TodoItem'
 import {useDispatch} from 'react-redux'
 
 interface DraggableTodoItemProps {
-    itemId: string,
+    itemId: number,
     index: number,
 }
 

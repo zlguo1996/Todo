@@ -1,6 +1,6 @@
 import {TodoState} from './types'
 import {TodoActionTypes} from '../actions/todoActions'
-import {ADD_TODO_ITEM, REMOVE_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM} from '../actions/types'
+import {ADD_TODO_ITEM, REMOVE_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM, UPDATE_TODO_ITEMS} from '../actions/types'
 import {limitInRange} from 'models/utils'
 
 const initialState: TodoState = {
@@ -66,6 +66,19 @@ export default function todoReducer(
             res.order.splice(insertIndex, 0, action.id)
 
             return res
+        }
+        case UPDATE_TODO_ITEMS: {
+            const items: TodoState['items'] = {}
+            const order: TodoState['order'] = []
+            action.items.forEach(item => {
+                items[item.id] = item
+                order.push(item.id)
+            })
+
+            return {
+                items,
+                order
+            }
         }
         default: {
             return state
