@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState, useRef} from 'react'
-import {tryAddItem as tryAddItemAction} from 'stores/actions/apiActions'
+import {addTodoItem as tryAddItemAction} from 'stores/actions/apiActions'
 import TextField from '@material-ui/core/TextField'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import {makeStyles} from '@material-ui/styles'

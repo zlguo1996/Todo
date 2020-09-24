@@ -5,7 +5,7 @@ import {RootState} from 'stores/store'
 import {TodoItem as TodoItemData} from 'common'
 import InputBase from '@material-ui/core/InputBase'
 import Checkbox from '@material-ui/core/Checkbox'
-import {modifyTodoItem, removeTodoItem} from 'stores/actions/todoActions'
+import {modifyTodoItem, removeTodoItem} from 'stores/actions/apiActions'
 import {makeStyles} from '@material-ui/styles'
 import Fade from '@material-ui/core/Fade'
 
