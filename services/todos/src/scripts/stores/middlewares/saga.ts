@@ -12,13 +12,18 @@ type PromiseReturnType<T extends (...args: any) => Promise<any>> = T extends (..
 
 function* queryTodo() {
     const items: PromiseReturnType<typeof readAllTodoItems> = yield call(readAllTodoItems)
-    yield call(updateTodoItems, {
+    yield put(updateTodoItems({
         items
-    })
+    }))
 }
 
 function* addTodo(action: AddTodoItemAction) {
-    yield call(addTodoItem, action)
+    console.log('add item')
+    const {
+        type,
+        ...item
+    } = action
+    yield call(addTodoItem, item)
     yield* queryTodo()
 }
 
@@ -40,6 +45,7 @@ function* moveTodo(action: MoveTodoItemAction) {
         id: action.id,
         order: action.targetIndex,
     })
+    yield* queryTodo()
 }
 
 // watches
@@ -49,6 +55,7 @@ function* watchQueryTodoItems() {
 }
 
 function* watchAddTodoItem() {
+    console.log('watch', ADD_TODO_ITEM)
     yield takeEvery(ADD_TODO_ITEM, addTodo)
 }
 
@@ -68,11 +75,11 @@ function* watchMoveTodoItem() {
 
 export function* rootSaga() {
     yield all([
-        watchQueryTodoItems,
-        watchRemoveTodoItem,
-        watchAddTodoItem,
-        watchMoveTodoItem,
-        watchModifyTodoItem,
+        watchQueryTodoItems(),
+        watchRemoveTodoItem(),
+        watchAddTodoItem(),
+        watchMoveTodoItem(),
+        watchModifyTodoItem(),
     ])
 }
 

@@ -8,3 +8,7 @@ const port = 8000
 app.listen(port, () => {
     console.log(`Todo app listening at http://localhost:${port}`)
 })
+
+// clear database
+import {removeAllTodoItems} from './database'
+removeAllTodoItems().then(() => console.log('Todo items in database all cleared'))
