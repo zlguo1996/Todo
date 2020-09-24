@@ -1,6 +1,6 @@
 import {config} from '../config'
 import axios from 'axios'
-import {FullTodoItem, TodoItem, AddItem, ModifyItem} from 'common'
+import {FullTodoItem, AddItem, ModifyItem} from 'common'
 
 const rootPath = `http://${config.serverIp}:8000/api/todoitems`
 

@@ -13,6 +13,32 @@ export default function todoReducer(
     action: TodoActionTypes
 ): TodoState {
     switch (action.type) {
+        case MODIFY_TODO_ITEM: {
+            return {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        ...state.items[action.id],
+                        ...action.item,
+                    },
+                },
+            }
+        }
+        case MOVE_TODO_ITEM: {
+            const res = {
+                ...state,
+                order: [...state.order]
+            }
+            const index = res.order.findIndex((val) => val === action.id)
+            const availableRange: [number, number] = [0, res.order.length - 1]
+            const insertIndex = limitInRange(action.targetIndex, availableRange)
+
+            res.order.splice(index, 1)
+            res.order.splice(insertIndex, 0, action.id)
+
+            return res
+        }
         case UPDATE_TODO_ITEMS: {
             const items: TodoState['items'] = {}
             const order: TodoState['order'] = []

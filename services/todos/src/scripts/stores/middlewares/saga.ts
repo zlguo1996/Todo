@@ -1,8 +1,8 @@
 import {readAllTodoItems, addTodoItem, removeTodoItem, modifyTodoItem} from '../../apis/todo'
-import {call, put, all, takeEvery} from 'redux-saga/effects'
+import {call, put, all, takeEvery, debounce} from 'redux-saga/effects'
 import {updateTodoItems} from '../actions/todoActions'
 import {AddTodoItemAction, ModifyTodoItemAction, RemoveTodoItemAction, MoveTodoItemAction} from '../actions/apiActions'
-import {ADD_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM, QUERY_TODO_ITEMS, REMOVE_TODO_ITEM, TRY_ADD_TODO_ITEM} from '../actions/types'
+import {ADD_TODO_ITEM, MODIFY_TODO_ITEM, MOVE_TODO_ITEM, QUERY_TODO_ITEMS, REMOVE_TODO_ITEM} from '../actions/types'
 import createSageMiddleware from 'redux-saga'
 
 
@@ -64,11 +64,11 @@ function* watchRemoveTodoItem() {
 }
 
 function* watchModifyTodoItem() {
-    yield takeEvery(MODIFY_TODO_ITEM, modifyTodo)
+    yield debounce(1000, MODIFY_TODO_ITEM, modifyTodo)
 }
 
 function* watchMoveTodoItem() {
-    yield takeEvery(MOVE_TODO_ITEM, moveTodo)
+    yield debounce(1000, MOVE_TODO_ITEM, moveTodo)
 }
 
 // root
