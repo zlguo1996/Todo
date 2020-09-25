@@ -10,6 +10,12 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+// static front end file
+app.use('/', express.static('../todos/dist/'))
+
+
+// apis
+
 app.get('/api', function (req, res) {
     res.send('Welcome to Todo REST API')
 })

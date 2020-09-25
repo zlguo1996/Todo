@@ -2,7 +2,7 @@ import {config} from '../config'
 import axios from 'axios'
 import {FullTodoItem, AddItem, ModifyItem} from 'common'
 
-const rootPath = `http://${config.serverIp}:8000/api/todoitems`
+const rootPath = `http://${config.serverAddress}/api/todoitems`
 
 export async function readAllTodoItems() {
     const path = rootPath
