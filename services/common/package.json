@@ -8,7 +8,7 @@
     "typescript-json-schema": "^0.43.0"
   },
   "scripts": {
-    "install": "typescript-json-schema src/apiTypes.ts * --noExtraProps --out src/schema.json"
+    "install": "typescript-json-schema src/apiTypes.ts '*' --noExtraProps --out src/schema.json"
   },
   "devDependencies": {
     "ts-node": "^9.0.0"
