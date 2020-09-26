@@ -1,3 +1,3 @@
 export const config = {
-    serverAddress: 'localhost:8000',
+    serverAddress: 'http://todo.zileguo.cn:8000',
 }
