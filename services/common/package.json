@@ -2,13 +2,16 @@
   "name": "common",
   "version": "1.0.0",
   "description": "common typescript library for other services",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "typescript-json-schema": "^0.43.0"
   },
   "scripts": {
-    "install": "typescript-json-schema src/apiTypes.ts '*' --noExtraProps --out src/schema.json"
+    "compileSchema": "typescript-json-schema src/apiTypes.ts \"*\" --noExtraProps --out src/schema.json",
+    "compileTypescript": "tsc",
+    "prepare": "npm run compileSchema && npm run compileTypescript"
   },
   "devDependencies": {
     "ts-node": "^9.0.0"

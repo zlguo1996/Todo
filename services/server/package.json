@@ -28,7 +28,8 @@
     "mysql": "^2.18.1"
   },
   "scripts": {
-    "serve": "ts-node src/index.ts",
+    "build": "tsc",
+    "serve": "node dist/index.js",
     "test": "jest --setupFiles dotenv/config -- validator"
   }
 }
