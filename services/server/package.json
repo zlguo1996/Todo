@@ -18,7 +18,7 @@
     "ajv": "^6.12.5",
     "body-parser": "^1.19.0",
     "bookshelf": "^1.2.0",
-    "common": "../common",
+    "common": "file:../common",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "env-var": "^6.2.0",
