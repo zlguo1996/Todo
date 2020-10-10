@@ -6,6 +6,9 @@ import {makeStyles} from '@material-ui/styles'
 import {useDispatch} from 'react-redux'
 
 const useStyles = makeStyles({
+    root: {
+        display: 'flex',
+    },
     icon: {
         padding: '9px',
     }
@@ -34,9 +37,9 @@ export const AddTodoItem: FunctionComponent = () => {
         }
     }
 
-    return <div>
+    return <div className={className.root}>
         <AddCircleIcon className={className.icon} />
-        <TextField ref={textRef} value={text} onChange={event => setText(event.target.value)} onBlur={tryAddItem} onKeyPress={keyDownHandler} />
+        <TextField ref={textRef} fullWidth={true} value={text} onChange={event => setText(event.target.value)} onBlur={tryAddItem} onKeyPress={keyDownHandler} />
     </div>
 }
 AddTodoItem.displayName = 'AddTodoItem'

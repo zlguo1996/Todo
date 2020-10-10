@@ -12,11 +12,6 @@ import {Filter} from './Filter'
 import {getFilteredTodos} from 'stores/selectors'
 
 const useStyles = makeStyles({
-    root: {
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '30px',
-    },
     paper: {
         padding: '10px',
     }
@@ -28,7 +23,6 @@ export const TodoList: FunctionComponent<{}> = () => {
     const todoIds = useSelector(getFilteredTodos)
 
     return <DndProvider backend={HTML5Backend}>
-        <div className={className.root}>
             <Paper className={className.paper}>
                 <Filter />
                 <AddTodoItem key="add-todo-item" />
@@ -48,7 +42,6 @@ export const TodoList: FunctionComponent<{}> = () => {
                     []
                 )}
             </Paper>
-        </div>
     </DndProvider>
 }
 TodoList.displayName = 'TodoList'

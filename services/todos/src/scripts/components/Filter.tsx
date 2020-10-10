@@ -1,19 +1,22 @@
 import React, {FunctionComponent} from 'react'
 import Chip from '@material-ui/core/Chip'
-import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/styles'
+import {Theme} from '@material-ui/core/styles'
 import {modifyFilter} from 'stores/actions/filterActions'
 import {getFilterState} from 'stores/selectors'
 import {useSelector, useDispatch} from 'react-redux'
 import {TodoItemState} from 'common'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
     root: {
         display: 'flex',
-        justifyContent: 'space-between',
-        padding: '9px 0px',
+        justifyContent: 'center',
+        padding: theme.spacing(1),
+        '& > *': {
+            margin: theme.spacing(0.5),
+        },
     }
-})
+}))
 
 export const Filter: FunctionComponent = () => {
     const className = useStyles()
