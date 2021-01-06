@@ -23,7 +23,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "common": "file:../common",
     "react": "^16.13.1",
     "react-dnd": "^11.1.3",
